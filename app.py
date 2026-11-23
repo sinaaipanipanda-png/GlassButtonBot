@@ -480,11 +480,6 @@ async def finish_creation(chat_id, user_id, draft):
     add_creation(user_id, draft["title"], draft["action"])
     clear_state(user_id)
 
-    if used < DAILY_FREE_LIMIT:
-        note = f"🎉 دکمه‌ات ساخته شد!\nساخت بدون تبلیغ امروز: {used + 1} از ۵"
-    else:
-        note = "🎉 دکمه‌ات ساخته شد!\nاین خروجی شامل دکمه تبلیغاتی است."
-
     # متن انتخابی کاربر بالای دکمه(ها) نمایش داده می‌شود.
     output_text = f"{note}\n\n{draft.get('caption', '').strip()}"
     await send(chat_id, output_text, ikb(rows))
